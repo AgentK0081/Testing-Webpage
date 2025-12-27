@@ -187,7 +187,7 @@ footer {
   </div>
   
 
-<div class="container">
+<div class="container" id="playersSection">
 
   <div class="player-list" id="playerList"></div>
 
@@ -258,7 +258,7 @@ render();
   <script>
 const tabPlayers = document.getElementById("tabPlayers");
 const tabDivisions = document.getElementById("tabDivisions");
-const playersSection = document.querySelector(".container");
+const playersSection = document.getElementById("playersSection");
 const divisionsSection = document.getElementById("divisionsSection");
 
 tabPlayers.onclick = () => {
