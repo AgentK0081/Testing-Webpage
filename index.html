@@ -150,6 +150,83 @@ footer {
   font-size: 13px;
 }
 
+  /* ================= DIVISIONS ================= */
+
+.division-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.division-card {
+  position: relative;
+  height: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  transition: transform 0.3s ease;
+}
+
+.division-card:hover {
+  transform: translateY(-6px);
+}
+
+.division-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.division-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.1));
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.division-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.division-sub {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.join-box {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.division-card.active .join-box {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.join-box button {
+  padding: 10px 26px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #d9b44a, #c49a2c);
+  color: black;
+}
+  
 @media(max-width: 900px) {
   .container { grid-template-columns: 1fr; }
 }
@@ -179,12 +256,9 @@ footer {
 </div>
 
   <div class="container" id="divisionsSection" style="display:none;">
-  <div class="player-list">
-    <div class="player">Federal Bureau of Investigation</div>
-    <div class="player">Hostage Rescue Team</div>
-    <div class="player">Internal Affairs Division</div>
-  </div>
-  </div>
+  <div class="division-grid" id="divisionGrid"></div>
+</div>
+
   
 
 <div class="container" id="playersSection">
@@ -275,6 +349,45 @@ tabDivisions.onclick = () => {
   divisionsSection.style.display = "grid";
 };
   </script>
+  
+<script src="divisions.js"></script>
+
+<script>
+const divisionGrid = document.getElementById("divisionGrid");
+
+function renderDivisions() {
+  divisionGrid.innerHTML = "";
+
+  divisions.forEach(d => {
+    const card = document.createElement("div");
+    card.className = "division-card";
+
+    card.innerHTML = `
+      <img src="${d.image}">
+      <div class="division-overlay">
+        <div class="division-title">${d.name}</div>
+        <div class="division-sub">${d.subtitle}</div>
+      </div>
+      <div class="join-box">
+        <button onclick="window.open('${d.discord}', '_blank')">
+          Join Now
+        </button>
+      </div>
+    `;
+
+    card.onclick = () => {
+      document
+        .querySelectorAll(".division-card")
+        .forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+    };
+
+    divisionGrid.appendChild(card);
+  });
+}
+
+renderDivisions();
+</script>
   
 
 </body>
