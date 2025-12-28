@@ -230,6 +230,25 @@ footer {
 @media(max-width: 900px) {
   .container { grid-template-columns: 1fr; }
 }
+/* Mobile-only fix for player list scrolling */
+@media (max-width: 768px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-list {
+    max-height: 55vh;       /* controls how tall the username list is */
+    overflow-y: auto;       /* enables scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .side-panel {
+    margin-top: 10px;
+  }
+  }
+  
 </style>
 </head>
 <body>
