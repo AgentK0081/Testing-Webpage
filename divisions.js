@@ -8,7 +8,7 @@ const divisions = [
   {
     name: "Unusual Incidents Unit",
     subtitle: "The UIU is a specialised unit made for all purposes but mainly unusual activities such as operations regarding an anomaly.",
-    image: "<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/XYFdgJTr/uiu-cropped.png' border='0' alt='uiu-cropped'></a>",
+    image: "https://cdn.discordapp.com/attachments/1150770600160268349/1454862240699121919/uiu_cropped.png?ex=6952a18c&is=6951500c&hm=2cc2ce8dcd64ec0cf60fb9ce52e5852bcdc42fa0015999e994594c62bba6c69b&",
     discord: "https://discord.gg/d8Ksmb2AbM"
   },
   {
