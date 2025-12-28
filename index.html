@@ -328,9 +328,12 @@ function render() {
 
   players
     .filter(p =>
-      p.username.toLowerCase().includes(query) &&
-      (!rank || p.rank === rank)
-    )
+    (
+      p.username.toLowerCase().includes(query) ||
+      p.callsign.toLowerCase().includes(query)
+    ) &&
+    (!rank || p.rank === rank)
+  )
     .forEach(p => {
       const div = document.createElement('div');
       div.className = 'player';
