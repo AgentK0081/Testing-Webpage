@@ -295,6 +295,31 @@ const statCallsign = document.getElementById('statCallsign');
 const statRank = document.getElementById('statRank');
 const statSuspended = document.getElementById('statSuspended');
 
+/* ================= Roblox avatar  ================= */
+  
+async function getRobloxAvatar(username) {
+  try {
+    const res = await fetch("https://users.roblox.com/v1/usernames/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        usernames: [username],
+        excludeBannedUsers: true
+      })
+    });
+
+    const data = await res.json();
+    if (!data.data.length) return "";
+
+    const userId = data.data[0].id;
+
+    return `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=48x48&format=Png&isCircular=false`;
+  } catch {
+    return "";
+  }
+}
+
+  
 function render() {
   const query = search.value.toLowerCase();
   const rank = rankFilter.value;
@@ -312,7 +337,7 @@ function render() {
 
       div.innerHTML = `
         <div class="player-left">
-          <div class="avatar"></div>
+          <img class="avatar" data-user="${p.username}">
           <div>
             <div class="player-name">${p.username}</div>
           </div>
@@ -329,6 +354,11 @@ function render() {
       };
 
       list.appendChild(div);
+      const avatarImg = div.querySelector(".avatar");
+getRobloxAvatar(p.username).then(url => {
+  if (url) avatarImg.src = url;
+});
+
     });
 }
 
