@@ -6,10 +6,10 @@ const divisions = [
     discord: "https://discord.gg/yourinvite1"
   },
   {
-    name: "Sheriff",
-    subtitle: "Liberty County Sheriff's Office",
-    image: "https://i.imgur.com/xG5FQ8n.png",
-    discord: "https://discord.gg/yourinvite2"
+    name: "Unusual Incidents Unit",
+    subtitle: "The UIU is a specialised unit made for all purposes but mainly unusual activities such as operations regarding an anomaly.",
+    image: "https://ibb.co/XfxHf6YY",
+    discord: "https://discord.gg/d8Ksmb2AbM"
   },
   {
     name: "Firefighter",
