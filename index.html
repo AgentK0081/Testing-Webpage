@@ -107,7 +107,10 @@ body {
   height: 42px;
   border-radius: 8px;
   background: #333;
+  object-fit: cover;
+  display: block;
 }
+
 
 .player-name {
   font-size: 18px;
@@ -385,7 +388,7 @@ function render() {
 
       div.innerHTML = `
         <div class="player-left">
-          <img class="avatar" data-user="${p.username}">
+          <img class="avatar" src="https://tr.rbxcdn.com/0fbb3b8b3d5f1c8b5c7c0d6f6f7b9f5e/48/48/AvatarHeadshot/Png">
           <div>
             <div class="player-name">${p.username}</div>
           </div>
