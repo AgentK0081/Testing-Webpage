@@ -313,10 +313,27 @@ const statCallsign = document.getElementById('statCallsign');
 const statRank = document.getElementById('statRank');
 const statSuspended = document.getElementById('statSuspended');
 
+const avatarCache = {}; // memory cache
+const AVATAR_CACHE_KEY = "robloxAvatarCache";
+  
+
 /* ================= Roblox avatar  ================= */
   
 async function getRobloxAvatar(username) {
+  // 1️⃣ Memory cache
+  if (avatarCache[username]) {
+    return avatarCache[username];
+  }
+
+  // 2️⃣ localStorage cache
+  const stored = JSON.parse(localStorage.getItem(AVATAR_CACHE_KEY) || "{}");
+  if (stored[username]) {
+    avatarCache[username] = stored[username];
+    return stored[username];
+  }
+
   try {
+    // 3️⃣ Roblox API call (only once per user)
     const res = await fetch("https://users.roblox.com/v1/usernames/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -327,12 +344,22 @@ async function getRobloxAvatar(username) {
     });
 
     const data = await res.json();
-    if (!data.data.length) return "";
+    if (!data.data || !data.data.length) return "";
 
     const userId = data.data[0].id;
 
-    return `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=48x48&format=Png&isCircular=false`;
-  } catch {
+    const avatarUrl =
+      `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=48x48&format=Png&isCircular=false`;
+
+    // 4️⃣ Save to caches
+    avatarCache[username] = avatarUrl;
+    stored[username] = avatarUrl;
+    localStorage.setItem(AVATAR_CACHE_KEY, JSON.stringify(stored));
+
+    return avatarUrl;
+
+  } catch (e) {
+    console.warn("Avatar fetch failed:", username);
     return "";
   }
 }
