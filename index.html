@@ -318,7 +318,6 @@ const statSuspended = document.getElementById('statSuspended');
 
   
   
-<script>
 function render() {
   const query = search.value.toLowerCase();
   const rank = rankFilter.value;
@@ -358,11 +357,11 @@ function render() {
       list.appendChild(div);
 
       /** ✅ SET ROBLOX AVATAR */
-      if (p.userId && Number.isInteger(p.userId)) {
+      if (p.userID && Number.isInteger(p.userID)) {
         const avatarImg = div.querySelector(".avatar");
         avatarImg.src =
           `https://thumbnails.roblox.com/v1/users/avatar-headshot` +
-          `?userIds=${p.userId}&size=48x48&format=Png&isCircular=false`;
+          `?userIds=${p.userID}&size=48x48&format=Png&isCircular=false`;
       }
     });
 }
@@ -370,9 +369,9 @@ function render() {
 search.addEventListener("input", render);
 rankFilter.addEventListener("change", render);
 render();
-</script>
+
   
-<script>
+
 const tabPlayers = document.getElementById("tabPlayers");
 const tabDivisions = document.getElementById("tabDivisions");
 const playersSection = document.getElementById("playersSection");
