@@ -2,7 +2,7 @@ const players = [
   { callsign: "FED001", username: "HIM12345t", rank: "Director", suspended: false },
   { callsign: "FED002", username: "AgentK_0081", rank: "Deputy Director", suspended: false },
   { callsign: "FED003", username: "foohm123", rank: "Assistant Director", suspended: false },
-  { callsign: "FED004", username: "Kris", rank: "Assistant Director", suspended: false },
+  { callsign: "FED004", username: "kristupelis2", rank: "Assistant Director", suspended: false },
   { callsign: "FED005", username: "AgentYeet1122", rank: "Assistant Director In-charge", suspended: false },
   { callsign: "FED006", username: "JohnLis912", rank: "Experienced Supervisory Special Agent", suspended: false },
   { callsign: "FED007", username: "Koruman3431", rank: "Directors [Division]", suspended: false },
