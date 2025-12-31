@@ -359,9 +359,7 @@ function render() {
       /** ✅ SET ROBLOX AVATAR */
       if (p.userID && Number.isInteger(p.userID)) {
         const avatarImg = div.querySelector(".avatar");
-        avatarImg.src =
-          `https://thumbnails.roblox.com/v1/users/avatar-headshot` +
-          `?userIds=${p.userID}&size=48x48&format=Png&isCircular=false`;
+        avatarImg.src = p.avatarUrl || "default-avatar.png";
       }
     });
 }
