@@ -46,6 +46,7 @@ const players = [
   { callsign: "FED200", username: "natepogi06",userID: 752004595 , rank: "Experienced Special Agent", suspended: false },
   { callsign: "FED214", username: "tobecontinud12",userID: 2968100831 , rank: "Special Agent", suspended: false },
   { callsign: "FED216", username: "huylatui12345",userID: 954179137 , rank: "Special Agent", suspended: false },
+  { callsign: "FED300", username: "EllingtonHDGT",userID: 595572134 , rank: "Experienced Supervisory Special Agent", suspended: false },
   { callsign: "FED315", username: "moosehead_v2",userID: 1863218938 , rank: "Probationary Special Agent", suspended: false },
   { callsign: "FED404", username: "Ghxsty1102",userID: 2051648048 , rank: "Probationary Special Agent", suspended: false },
   { callsign: "FED528", username: "Mateusz_FBI",userID: 2393711506 , rank: "Special Agent", suspended: false },
